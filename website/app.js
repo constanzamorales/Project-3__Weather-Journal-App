@@ -50,16 +50,17 @@ const postData = async (url = '', data = {}) => {
     });
     try {
         const newWeather = await response.json();
-            return newWeather;
+        console.log(newWeather);
+        return newWeather;
     } catch(error) {
         console.log('Oops! There was an error in the POST data function!', error);
     }
 }
 /* Function to GET Project Data */
 const getProjectData = async (url = '') => {
-    const request = await fetch(url);
+    const response = await fetch(url);
     try {
-        const getData = await request.json()
+        const getData = await response.json()
     }
     catch(error) {
         console.log('Oh no! There was an error in the GET project data function', error);

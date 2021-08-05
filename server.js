@@ -37,14 +37,14 @@ function listening() {
 // Initialize all route with a callback function
 app.get('/all', function(request, response) {
     response.send(projectData);
-})
+});
 
 // Post Route
 // First create an array to hold data
 const data = [];
 // Create post() with a url path and a callback function
-app.post('/addEntry', addData);
-function addData (request, response) {
+app.post('/addEntry', addEntry);
+function addEntry (request, response) {
     console.log(request.body);
     projectData = request.body;
     response.send(projectData);
