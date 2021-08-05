@@ -43,9 +43,10 @@ app.get('/all', function(request, response) {
 // First create an array to hold data
 const data = [];
 // Create post() with a url path and a callback function
-app.post('/addData', addData);
+app.post('/addEntry', addData);
 function addData (request, response) {
     console.log(request.body);
-    data.push(request.body);
+    projectData = request.body;
+    response.send(projectData);
 }
 
