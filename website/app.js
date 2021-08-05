@@ -13,7 +13,7 @@ document.getElementById('generate').addEventListener('click', getWeather);
 function getWeather(event) {
     const zip = document.getElementById('zip').value;
     const feelings = document.getElementById('feelings').value;
-    getData(baseURL, zip, apiKey)
+    getWeatherData(baseURL, zip, apiKey)
     .then (function (weather) {
         const temperature = weather.main.temp;
         const feeling = feelings;
@@ -26,7 +26,7 @@ function getWeather(event) {
     });
 }
 /* Function to GET Web API Data*/
-const getData = async (baseURL, zip, apiKey) => {
+const getWeatherData = async (baseURL, zip, apiKey) => {
     const response = await fetch(baseURL+zip+apiKey);
     // Try calling the API
     try {
@@ -34,13 +34,47 @@ const getData = async (baseURL, zip, apiKey) => {
         console.log(weather);
         // If that doesn't work, handle the error
     } catch(error) {
-        console.log('Oops! There was an error :(', error);
+        console.log('Oops! There was an error in the GET data function', error);
     }
 }
 /* Function to POST data */
-const postData = async (url='', data = {}) => {
-    
+const postData = async (url = '', data = {}) => {
+    const response = await fetch(url, (
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    ));
+    try {
+        const newWeather = await.response.json();
+        return newWeather;
+    } catch(error) {
+        console.log('Oops! There was an error in the POST data function!', error);
+    }
 }
 /* Function to GET Project Data */
+const getProjectData = async (url = '') => {
+    const request = await fetch(url);
+    try {
+        const getData = await request.json();
+    }
+    catch(error) {
+        console.log('Oh no! There was an error in the GET project data function', error);
+    }
+};
 
+/* Updating UI */
+const updateUI = async () => {
+    const request = await fetch('/getData');
+    try {
+        const lastEntry = await request.json();
+        document.getElementById('date').innerHTML = lastEntry['date'];
+        document.getElementById('temp').innerHTML = lastEntry['temp'];
+        document.getElementById('content').innerHTML = lastEntry['feeling'];
+    } catch (error) {
+        console.log('There was an error updating the UI!', error);
+    }
+}
 
