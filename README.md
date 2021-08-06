@@ -1,10 +1,18 @@
 # Weather-Journal App Project
 
 ## Overview
-This project requires you to create an asynchronous web app that uses Web API and user data to dynamically update the UI. 
+This project requires the student to create an asynchronous web app that uses Web API and user data to dynamically update the UI. 
 
-## Instructions
-This will require modifying the `server.js` file and the `website/app.js` file. You can see `index.html` for element references, and once you are finished with the project steps, you can use `style.css` to style your application to customized perfection.
+## Technologies used
+* HTML
+* CSS
+* Javascript (Node, Express and Vanila JS)
 
-## Extras
-If you are interested in testing your code as you go, you can use `tests.js` as a template for writing and running some basic tests for your code.
+## How does it work?
+The user enters a city and their feelings to generate an entry with current date, temperature and the feelings entered in the textarea.
+As of now, the page displays only the most recent entry.
+
+## How to run the page
+1. Install `cors`, `body-parser` and `express` with npm.
+2. Run the server through the terminal with `node server.js`.
+3. Go to `localhost:8000` in your browser.
