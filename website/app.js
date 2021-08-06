@@ -70,11 +70,17 @@ const getProjectData = async (url = '') => {
 /* Updating UI */
 const updateUI = async () => {
     const request = await fetch('/all');
+    // Select entries sections to change visibility
+    const noEntries = document.getElementById('noEntries');
+    const entry = document.getElementById('entryHolder');
     try {
         const lastEntry = await request.json();
         document.getElementById('date').innerHTML = lastEntry['date'];
         document.getElementById('temp').innerHTML = lastEntry['temp'];
         document.getElementById('content').innerHTML = lastEntry['feeling'];
+
+        noEntries.style.display = 'none';
+        entry.style.visibility = 'visible';
     } catch (error) {
         console.log('There was an error updating the UI!', error);
     }
