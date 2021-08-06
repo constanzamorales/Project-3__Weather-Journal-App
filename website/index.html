@@ -5,29 +5,42 @@
 <title>Weather Journal</title>
 <link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+  href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Proza+Libre:wght@600;800&display=swap"
+  rel="stylesheet">
 </head>
  <body>
-<div id = "app">
-  <div class ="holder headline">
-    Weather Journal App
-  </div>
-  <div class ="holder city">
-    <label for="city">Enter city name here</label>
-    <input type="text" id="city" placeholder="Enter a city name">
-  </div>
-  <div class ="holder feel">
-    <label for="feelings">How are you feeling today?</label>
-    <textarea class= "myInput" id="feelings" placeholder="Enter your feelings here" rows="9" cols="50"></textarea>
-    <button id="generate" type = "submit"> Generate </button>
-  </div>
-  <div class ="holder entry">
-    <div class = "title">Most Recent Entry</div>
-   <div id = "entryHolder">
-    <div id = "date"></div> 
-   <div id = "temp"></div>
-   <div id = "content"></div>
-  </div>
-  </div>
+
+   <div class="container">
+    <div class="title">
+      <h1>Weather Journal App</h1>
+    </div>
+
+    <div id="app">
+      <div class="inputs">
+        <div class="city-input">
+          <label for="city" class="city-label">Enter city name here</label>
+          <input class="city-placeholder" type="text" id="city" placeholder="Enter a city name">
+        </div>
+        <div class="feelings-input">
+          <label for="feelings">How are you feeling today?</label>
+          <textarea id="feelings" placeholder="Enter your feelings here"></textarea>
+          <button id="generate" type="submit"> Generate </button>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="title">Most Recent Entry</div>
+        <div id="entryHolder">
+          <div id="date"></div> 
+        <div id="temp"></div>
+        <div id="content"></div>
+        </div>
+      </div>
+      
+    </div>
   </div>
 <script src="app.js" type="text/javascript"></script>
 
