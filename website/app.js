@@ -2,10 +2,18 @@
 // Personal API Key for OpenWeatherMap API
 const apiKey = '&appid=2de1e0b71614dec5ecd1e018c409e23c';
 let baseURL = 'http://api.openweathermap.org/data/2.5/weather?q=';
+const units = '&units=metric';
 
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+let newDate = d.toUTCString();
+
+// Function to clear inputs after refresh https://stackoverflow.com/questions/46133972/clear-input-field-on-page-refresh/46134438
+window.onload = function () {
+    document.getElementById('city').value = "";
+    document.getElementById('feelings').value = "";
+}
+
 
 // Event listener to add function to existing HTML DOM element
 document.getElementById('generate').addEventListener('click', getWeather);
@@ -13,7 +21,7 @@ document.getElementById('generate').addEventListener('click', getWeather);
 function getWeather(event) {
     const city = document.getElementById('city').value;
     const feelings = document.getElementById('feelings').value;
-    getWeatherData(baseURL, city, apiKey)
+    getWeatherData(baseURL, city, units, apiKey)
     .then (function (weather) {
         const temperature = weather.main.temp;
         const feeling = feelings;
@@ -26,8 +34,8 @@ function getWeather(event) {
 
 
 /* Function to GET Web API Data */
-const getWeatherData = async (baseURL, city, apiKey) => {
-    const response = await fetch(baseURL+city+apiKey);
+const getWeatherData = async (baseURL, city, units, apiKey) => {
+    const response = await fetch(baseURL+city+units+apiKey);
     // Try calling the API
     try {
         const weather = await response.json();
@@ -76,7 +84,7 @@ const updateUI = async () => {
     try {
         const lastEntry = await request.json();
         document.getElementById('date').innerHTML = lastEntry['date'];
-        document.getElementById('temp').innerHTML = lastEntry['temp'];
+        document.getElementById('temp').innerHTML = `${lastEntry['temp']}°C`;
         document.getElementById('content').innerHTML = lastEntry['feeling'];
 
         noEntries.style.display = 'none';
