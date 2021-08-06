@@ -67,7 +67,7 @@ hr {
 	margin-bottom: 10px;
 }
 
-.city-input {
+.zip-input {
 	padding-bottom: 30px;
 }
 
@@ -76,12 +76,6 @@ hr {
 	font-size: 18px;
 	font-weight: 800;
 	color: #535353;
-}
-
-#temp {
-}
-
-#content {
 }
 
 /*  Basic Styling To Override Default For Basic HTML Elements */
@@ -126,6 +120,10 @@ button {
 	border-radius: 30px;
 	box-shadow: 2px 4px 3px rgba(153, 153, 153, 0.5);
 }
+button:hover {
+	background: #c24919;
+}
+
 h1 {
 	font-size: 36px;
 }

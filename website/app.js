@@ -10,7 +10,7 @@ let newDate = d.toUTCString();
 
 // Function to clear inputs after refresh https://stackoverflow.com/questions/46133972/clear-input-field-on-page-refresh/46134438
 window.onload = function () {
-    document.getElementById('city').value = "";
+    document.getElementById('zip').value = "";
     document.getElementById('feelings').value = "";
 }
 
@@ -19,9 +19,9 @@ window.onload = function () {
 document.getElementById('generate').addEventListener('click', getWeather);
 /* Function called by event listener */
 function getWeather(event) {
-    const city = document.getElementById('city').value;
+    const zip = document.getElementById('zip').value;
     const feelings = document.getElementById('feelings').value;
-    getWeatherData(baseURL, city, units, apiKey)
+    getWeatherData(baseURL, zip, units, apiKey)
     .then (function (weather) {
         const temperature = weather.main.temp;
         const feeling = feelings;
@@ -34,8 +34,8 @@ function getWeather(event) {
 
 
 /* Function to GET Web API Data */
-const getWeatherData = async (baseURL, city, units, apiKey) => {
-    const response = await fetch(baseURL+city+units+apiKey);
+const getWeatherData = async (baseURL, zip, units, apiKey) => {
+    const response = await fetch(baseURL+zip+units+apiKey);
     // Try calling the API
     try {
         const weather = await response.json();
