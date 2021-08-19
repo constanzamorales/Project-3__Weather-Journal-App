@@ -1,6 +1,6 @@
 /* Global Variables */
 // Personal API Key for OpenWeatherMap API
-const apiKey = '&appid=2de1e0b71614dec5ecd1e018c409e23c';
+const apiKey = '';
 let baseURL = 'http://api.openweathermap.org/data/2.5/weather?q=';
 const units = '&units=metric';
 
